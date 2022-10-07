@@ -4,13 +4,14 @@ interface IButtons{
     ButtonName?:string;
     actionButton?:() => void
     className?:string;
+    disabled?:boolean
 }
 
 
 
-export const TimesButtons: React.FC<IButtons> =  ({ButtonName,actionButton,className}) => {
+export const TimesButtons: React.FC<IButtons> =  ({ButtonName,actionButton,className,disabled}) => {
     return (
-    <button className={className} onClick={actionButton}>
+    <button disabled={disabled} className={className} onClick={actionButton}>
     
         {ButtonName}
         

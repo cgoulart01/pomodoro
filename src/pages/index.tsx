@@ -74,9 +74,9 @@ const stopTimer = ()=>{
             
              <div className={styled.timesConteiner}>  
               
-              <TimesButtons className={styled.timeButton} ButtonName='Pomodoro' actionButton={()=>focusTimer()}/>
-              <TimesButtons className={styled.timeButton}ButtonName='Long Break' actionButton={()=>longBreak()}/>
-              <TimesButtons className={styled.timeButton} ButtonName='Short Break' actionButton={()=> shortBreak()}/>
+              <TimesButtons disabled={play} className={styled.timeButton} ButtonName='Pomodoro' actionButton={()=>focusTimer()}/>
+              <TimesButtons disabled={play} className={styled.timeButton}ButtonName='Long Break' actionButton={()=>longBreak()}/>
+              <TimesButtons disabled={play} className={styled.timeButton} ButtonName='Short Break' actionButton={()=> shortBreak()}/>
                </div>
               
                 <p> {secondsToHms(timer)} </p>
