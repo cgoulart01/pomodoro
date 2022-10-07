@@ -1,6 +1,6 @@
 
 import React from "react"
-import ArrowBack from "../_Components/ArrowBack/ArrowBack"
+import ArrowBack from "../../Components/ArrowBack/ArrowBack"
 const Settings = () => {
 
 
