@@ -13,20 +13,36 @@ import styled from "../styles/Home.module.scss"
  const Home = () => {
     const [timer,setTimer] = useState(25*60)
     const [play,setPlay] = useState(false)
+    const [timeTyper,setTimeTyper] =useState("focus")
 
     const focusTimer= () =>{
         setTimer(25*60)
+        setTimeTyper("focus")
     }
     const shortBreak= () =>{
         setTimer(5*60)
+        setTimeTyper("focus")
     }
 
 const longBreak= () =>{
     setTimer(15*60)
+    setTimeTyper("long")
 }
 
 const startTimer = ()=>{
     setPlay(!play)
+}
+const stopTimer = ()=>{
+    setPlay(false)
+    if(timeTyper==="focus"){
+        focusTimer()
+    }
+    if(timeTyper==="short"){
+        shortBreak()
+    }
+    if(timeTyper==="long"){
+        longBreak()
+    }
 }
  useEffect(()=>{
  if(timer===0){
@@ -44,6 +60,8 @@ const startTimer = ()=>{
  },[timer,play])
 
     return (
+        <>
+       
         <div className={styled.background}>
             
             <header className={styled.Title}>
@@ -64,9 +82,10 @@ const startTimer = ()=>{
                 <p> {secondsToHms(timer)} </p>
                 
                 <TimesButtons className={styled.timeButton} actionButton={()=>startTimer()} ButtonName={!play?'Start':"Pause"}/>
+               
              </div>
         
-        </div>
+        </div></>
             
         )
 } 
