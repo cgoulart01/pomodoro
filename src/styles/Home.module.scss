@@ -21,6 +21,7 @@
 
 .pomodoroConteiner{
     background-color: $pomodoro-container;
+    
     display: flex;
     width: 400px;
     flex-direction: column;
@@ -45,13 +46,17 @@
         }
        }
        .timeButton{
+        font-family: "Fraunces",serif;
         background-color: $pomodoro-container;
         border: solid 2px $secondary-color;
         margin: 15px;
         border-radius: 8px;
         text-decoration: none;
         text-transform: none;
-        
+        @include mobile{
+            font-size: medium;
+            height: 100px;
+        }
         height: 50px;
         width: 100px;
         margin-top: 10px;
@@ -67,6 +72,7 @@
     display: flex;
     justify-content: center;
     .timeButton{
+        font-family: "Fraunces",serif;
         border-radius: 8px;
         text-decoration: none;
         text-transform: none;
@@ -77,6 +83,7 @@
         @include mobile{
             font-size: medium;
             height: 100px;
+            width: 200px;
         }
        }
    
