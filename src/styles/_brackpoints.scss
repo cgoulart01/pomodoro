@@ -1,0 +1,25 @@
+// Breakpoints
+$breakpoints: (
+    "lg": 1920px,
+    "xl": 3840px,
+    "mobile": 400px,
+);
+
+// Full HD
+@mixin lg {
+    @media(min-width: map-get($breakpoints, lg)) {
+        @content;
+    }
+}
+
+// 4K
+@mixin xl {
+    @media(min-width: map-get($breakpoints, xl)) {
+        @content;
+    }
+}
+@mixin mobile {
+    @media(min-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
