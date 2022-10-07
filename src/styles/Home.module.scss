@@ -43,6 +43,7 @@
        
        }
        .timeButton{
+        color: #000;
         font-family: "Fraunces",serif;
         background-color: $pomodoro-container;
         border: solid 2px $secondary-color;
@@ -66,6 +67,7 @@
     display: flex;
     justify-content: center;
     .timeButton{
+        color: #000;
         font-family: "Fraunces",serif;
         border-radius: 8px;
         text-decoration: none;
