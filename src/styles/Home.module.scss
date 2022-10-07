@@ -1,0 +1,72 @@
+
+$secondary-color:rgb(212, 128, 128);
+$pomodoro-button:rgb(255, 163, 163);
+
+.background{
+   
+    background-color: rgb(252, 161, 161);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+.Title{
+    font-size: xx-large;
+    font-family: "Fraunces",serif;
+}
+
+.pomodoroConteiner{
+    background-color: rgb(255, 163, 163);
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 4px 5px $secondary-color;
+    border-radius: 16px;
+    padding: 2px;
+    p{
+        padding: 0;
+        margin: 0;
+        font-size: 100px;
+        
+        font-family: 'Fraunces', serif;
+       }
+       .timeButton{
+        background-color: $pomodoro-button;
+        border: solid 2px $secondary-color;
+        margin: 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        text-transform: none;
+        
+        height: 50px;
+        width: 100px;
+        margin-top: 10px;
+        cursor: pointer;
+        &:hover{
+            background-color: $secondary-color;
+            border: solid 2px $pomodoro-button;
+        }
+    }
+ .timesConteiner{
+  
+    width: 100% ;
+    display: flex;
+    justify-content: center;
+    .timeButton{
+        border-radius: 8px;
+        text-decoration: none;
+        text-transform: none;
+        border: solid 2px $secondary-color;
+        height: 50px;
+        margin-top: 5px;
+        cursor: pointer;
+       }
+   
+ }
+}
+
+}
