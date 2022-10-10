@@ -15,7 +15,9 @@ import styled from "../../styles/Settings.module.scss"
 const Settings = () => {
  const {settings,handleSubmit} = usePomodoroSettings()
  const [local, setLocal] = useState(false)
- const localSettings = local?( JSON.parse(localStorage.getItem("settings")||"")):null
+ const focus = localStorage.getItem("focus")
+ const short = localStorage.getItem("short")
+ const long = localStorage.getItem("long")
 
 const saveSettings= (chave:string, value:string)=>{
 window.localStorage.setItem(chave,value)
@@ -29,19 +31,21 @@ window.localStorage.setItem(chave,value)
        <div className={styled.settingsBackground}>
        <h1>Settings</h1>
        <div className={styled.inputStyle}>
-       <label htmlFor="focus">Current Focus Time is  {localSettings!==null ? localSettings.focus : settings.focus} minutes.</label>
+       <label htmlFor="focus">Current Focus Time is  {focus!==null ? focus : settings.focus} minutes.</label>
         <input onChange={handleSubmit} name="focus"type="number" min="0"/>
         </div>
         <div className={styled.inputStyle}>
-        <label htmlFor="long">Current long break is  {localSettings!==null ? localSettings.long : settings.long} minutes.</label>
+        <label htmlFor="long">Current long break is  {long!==null ? long : settings.long} minutes.</label>
         <input onChange={handleSubmit} name="long" type="number" min="0"/>
         </div>
         <div className={styled.inputStyle}>
-        <label htmlFor="short"> Current short break is {localSettings!==null ? localSettings.short : settings.short} minutes.</label>
+        <label htmlFor="short"> Current short break is {short!==null ? short : settings.short} minutes.</label>
         <input onChange={handleSubmit} name="short"type="number" min="0"/>
         </div>
         <Link href="/"><button onClick={e=>{
-          saveSettings("settings",JSON.stringify(settings))
+          saveSettings("focus",JSON.stringify(settings.focus))
+          saveSettings("short",JSON.stringify(settings.short))
+          saveSettings("long",JSON.stringify(settings.long))
         }}>Save Settings</button>
        </Link>
        </div>

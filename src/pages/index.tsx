@@ -16,19 +16,21 @@ import { usePomodoroSettings } from '../Context/SettingContext'
     const [timer,setTimer] = useState(pomodoroCtx.settings.focus*60)
     const [play,setPlay] = useState(false)
     const [timeTyper,setTimeTyper] =useState("focus")
-    const localSettings =localStorage?( JSON.parse(localStorage.getItem("settings")||"")):null
+    const focus = localStorage.getItem("focus")
+    const short = localStorage.getItem("short")
+    const long = localStorage.getItem("long")
     
     const focusTimer= () =>{
-        setTimer((localSettings?localSettings.focus: pomodoroCtx.settings.focus)*60)
+        setTimer((focus?parseInt(focus): pomodoroCtx.settings.focus)*60)
         setTimeTyper("focus")
     }
     const shortBreak= () =>{
-        setTimer((localSettings!==""?localSettings.short:pomodoroCtx.settings.short)*60)
+        setTimer((short?parseInt(short):pomodoroCtx.settings.short)*60)
         setTimeTyper("")
     }
 
 const longBreak= () =>{
-    setTimer((localSettings!==""?localSettings.long:pomodoroCtx.settings.long)*60)
+    setTimer((long?parseInt(long):pomodoroCtx.settings.long)*60)
     setTimeTyper("long")
 }
 
