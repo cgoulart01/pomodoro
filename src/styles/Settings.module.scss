@@ -1,0 +1,72 @@
+@import "./envVariables";
+
+    .background{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .settingsBackground{
+            background-color: $pomodoro-container;
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+           .inputStyle{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            label{
+                width: 50%;
+            }
+            input[type=number]{
+                text-align: center;
+                width: 40%;
+                margin-bottom: 10px;
+                height:20%;
+                border-radius: 8px;
+                border: none;
+                color:#000;
+                background-color: $secondary-color;
+                padding-left: 5px;
+                font-size: 60px;
+                font-weight: bold;
+                font-family: "Frauces",serif;
+                -webkit-inner-spin-button { 
+                    all: unset; 
+                    min-width: 21px;
+                    min-height: 45px;
+                    margin: 17px;
+                    padding: 0px;
+                    background-image: 
+                    linear-gradient(to top, transparent 0px, transparent 16px, #fff 16px, #fff 26px, transparent 26px, transparent 35px, #000 35px,#000 36px,transparent 36px, transparent 40px),
+                    linear-gradient(to right, transparent 0px, transparent 10px, #000 10px, #000 11px, transparent 11px, transparent 21px);
+                    transform: rotate(90deg) scale(0.8, 0.9);
+                    cursor:pointer;
+                  }
+                   
+            }
+           }
+            button{
+                
+                    color: #000;
+                    font-family: "Fraunces",serif;
+                    background-color: $pomodoro-container;
+                    border: solid 2px $secondary-color;
+                    margin: 2px;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    text-transform: none;
+                    font-size: medium;
+                    height: 100px;
+                    width: 250px;       
+                    margin-top: 10px;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: $secondary-color;
+                        border: solid 2px $pomodoro-container;
+                    }
+            }
+        }
+    
+    }

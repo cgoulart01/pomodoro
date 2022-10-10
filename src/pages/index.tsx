@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-
+import {VscSettingsGear} from "react-icons/vsc"
 
 import Link from 'next/link'
 
@@ -9,41 +9,33 @@ import React, { useEffect, useState } from 'react'
 import { TimesButtons } from '../Components/TimesButtons/TimesButtons'
 import {secondsToHms} from '../helpers/SecondToHms.js'
 import styled from "../styles/Home.module.scss"
+import { usePomodoroSettings } from '../Context/SettingContext'
 
  const Home = () => {
-    const [timer,setTimer] = useState(25*60)
+    const pomodoroCtx = usePomodoroSettings()
+    const [timer,setTimer] = useState(pomodoroCtx.settings.focus*60)
     const [play,setPlay] = useState(false)
     const [timeTyper,setTimeTyper] =useState("focus")
-
+    const localSettings =localStorage?( JSON.parse(localStorage.getItem("settings"))):null
+    
     const focusTimer= () =>{
-        setTimer(25*60)
+        setTimer((localSettings?localSettings.focus: pomodoroCtx.settings.focus)*60)
         setTimeTyper("focus")
     }
     const shortBreak= () =>{
-        setTimer(5*60)
-        setTimeTyper("focus")
+        setTimer((localSettings?localSettings.short:pomodoroCtx.settings.short)*60)
+        setTimeTyper("")
     }
 
 const longBreak= () =>{
-    setTimer(15*60)
+    setTimer((localSettings?localSettings.long:pomodoroCtx.settings.long)*60)
     setTimeTyper("long")
 }
 
 const startTimer = ()=>{
     setPlay(!play)
 }
-const stopTimer = ()=>{
-    setPlay(false)
-    if(timeTyper==="focus"){
-        focusTimer()
-    }
-    if(timeTyper==="short"){
-        shortBreak()
-    }
-    if(timeTyper==="long"){
-        longBreak()
-    }
-}
+
  useEffect(()=>{
  if(timer===0){
    setTimeout(()=>
@@ -69,6 +61,19 @@ const stopTimer = ()=>{
                     PomodoroTimer
                     </h1>
                     </header>
+                    <div className={styled.instructions}>
+
+<h3>
+Instructions
+</h3>
+<p >for each focus cycle do a short break cycle, and when it completes four the next break will be a long break.</p>
+
+<p>
+The clock follows the pomodoro pattern, with the focus period being 25min, the short pause 5min and the long pause 15min.
+    
+if you want to change the values ​​just click on the    <VscSettingsGear/> to configure.
+ </p>
+</div>  
 
             <div className={styled.pomodoroConteiner}>
             
@@ -77,13 +82,20 @@ const stopTimer = ()=>{
               <TimesButtons disabled={play} className={styled.timeButton} ButtonName='Pomodoro' actionButton={()=>focusTimer()}/>
               <TimesButtons disabled={play} className={styled.timeButton}ButtonName='Long Break' actionButton={()=>longBreak()}/>
               <TimesButtons disabled={play} className={styled.timeButton} ButtonName='Short Break' actionButton={()=> shortBreak()}/>
-               </div>
               
+               </div>
+               
                 <p> {secondsToHms(timer)} </p>
-                
+                <div className={styled.settings}>
+                <Link href="/settings">
+              <VscSettingsGear style={{fontSize:"25px"}}/> 
+
+              </Link>
                 <TimesButtons className={styled.timeButton} actionButton={()=>startTimer()} ButtonName={!play?'Start':"Pause"}/>
+                </div>
                
              </div>
+
         
         </div></>
             
